@@ -1,0 +1,102 @@
+const personagens = [
+  {
+    id: 1,
+    nome: 'Dr. Kenzo Tenma',
+    personalidade: 'INFP',
+    imagem:
+      'https://static1.personality-database.com/profile_images/e5541571dee843959d5cff9745ae39fc.png',
+    sobre:
+      "Dr. Kenzo Tenma (天馬 賢三, Tenma Kenzō) is the primary protagonist of the Monster series. Formerly, he was a genius neurosurgeon and a rising star at the Eisler Memorial Hospital, considered to be one of the best in the field, until he disobeyed the Hospital Director's orders to perform brain surgery on Mayor Roedecker, choosing instead to operate on a newly-orphaned boy, Johan Liebert. Since the boy arrived first, he decided to risk his promising future to do what was morally correct and save Johan regardless of the consequences. Unfortunately, the mayor passed away and so did Tenma's favored standing at the hospital while the boy, along with his twin sister, went missing...",
+  },
+  {
+    id: 2,
+    nome: 'Johan Liebert',
+    personalidade: 'INFJ',
+    imagem:
+      'https://static1.personality-database.com/profile_images/bf04e74749e7495f9672f726b077f2ab.png',
+    sobre:
+      "Johan Liebert is the titular 'monster' and main antagonist of the series. On the surface, Johan is a well-mannered, charismatic, and compassionate yet somewhat aloof young man. He possesses a myriad of favorable traits and can easily overwhelm individuals with his seemingly flawless nature. This meticulously crafted facade makes it easy for him to make new allies and manipulate them into doing various deeds for him through the influence of his supposed friendship and good will. With such skill in creating this sense of perfection and pureness, Johan hides his true motives with ease. Many of Johan's beliefs run consistent with nihilism, as he does not see any meaning to life. He claims, 'Most of this universe is 'death' anyway,' and that to the universe, 'most lives are just specks in a corner of the earth, gone in a flash'. #CompleteMonster",
+  },
+  {
+    id: 3,
+    nome: 'Heinrich Lunge',
+    personalidade: 'INTJ',
+    imagem:
+      'https://static1.personality-database.com/profile_images/23e58040970e4c97854d10c1fb8e41a8.png',
+    sobre:
+      'Inspector Heinrich Lunge (ハインリッヒ・ルンゲ) is the main deuteragonist of the series. An officer employed in the BKA - Lunge obsessively believes that Dr. Kenzo Tenma is responsible for a series of murders and criminal events taking place in Germany, and doggedly pursues him to that end.',
+  },
+  {
+    id: 4,
+    nome: 'Eva Heinemann',
+    personalidade: 'ESTJ',
+    imagem:
+      'https://static1.personality-database.com/profile_images/15d971e6ea3c497fbc538c4858fbd0ed.png',
+    sobre:
+      'Eva Heinemann (エヴァ・ハイネマン, Evua Haineman) is the daughter of Udo Heinemann and the fiancée of Kenzo Tenma.',
+  },
+  {
+    id: 5,
+    nome: 'Nina Fortner',
+    personalidade: 'ENFJ',
+    imagem:
+      'https://static1.personality-database.com/profile_images/767bd18f45a448faa43586494148e98b.png',
+    sobre:
+      'Nina Fortner, originally known as Anna Liebert, is the younger twin sister of Johan Liebert and one of the main protagonists in the series.',
+  },
+  {
+    id: 6,
+    nome: 'Wolfgang Grimmer',
+    personalidade: 'ENFJ',
+    imagem:
+      'https://static1.personality-database.com/profile_images/41977dad31434bedbb9ff641ec69c1b8.png',
+    sobre:
+      'Wolfgang Grimmer (ヴォルフガング・グリマー, Vu~orufugangu Gurimā) is the tritagonist of the series. He is trained as a spy, and travels around Germany posing as a freelance journalist, but is in actuality trying to uncover more information about Kinderheim 511 and his past.',
+  },
+  {
+    id: 7,
+    nome: 'Franz Bonaparta',
+    personalidade: 'INTP',
+    imagem:
+      'https://static1.personality-database.com/profile_images/505d8e9c082947c4bb6e735980dc92b4.png',
+    sobre:
+      'Franz Bonaparta is a major figure behind many important mysteries in the series. Bonaparta is a quiet, intimidating man. He enjoys talking over tea and pastries, and also finds fascination in capabilities of the human mind. His editor describes his personality as cold, haughty, and self-assured. He tends to capture the darker side of humanity in his books, often portraying the theme that the monster you fear is yourself, and thus you cannot escape its grasps.',
+  },
+  {
+    id: 8,
+    nome: 'Roberto',
+    personalidade: 'ESTP',
+    imagem:
+      'https://static1.personality-database.com/profile_images/e02037d5d052411fafb013d442471069.png',
+    sobre: '',
+  },
+  {
+    id: 9,
+    nome: 'Richard Braun',
+    personalidade: 'ESFP',
+    imagem:
+      'https://static1.personality-database.com/profile_images/b37f530f72034fc382d570c6e0d31cdb.png',
+    sobre: '',
+  },
+  {
+    id: 10,
+    nome: 'The Baby',
+    personalidade: 'ENTJ',
+    imagem:
+      'https://static1.personality-database.com/profile_images/42ccfdceddfe408b89dbbbae6e051d24.png',
+    sobre: '',
+  },
+];
+
+const findAllPersonagensService = () => {
+  return personagens;
+};
+
+const findByIdPersonagensService = (id) => {
+  return personagens.find((personagem) => personagem.id == id);
+};
+
+module.exports = {
+  findAllPersonagensService,
+  findByIdPersonagensService,
+};
