@@ -13,24 +13,31 @@ const findByIdPersonagensController = (req, res) => {
 };
 
 const createPersonagensController = (req, res) => {
-    const personagem = req.body;
-    const novoPersonagem = personagensService.createPersonagemService(personagem);
-    res.send(novoPersonagem);
+  const personagem = req.body;
+  const novoPersonagem = personagensService.createPersonagemService(personagem);
+  res.send(novoPersonagem);
 };
 
 const updatePersonagensController = (req, res) => {
-    const idParam = +req.params.id;
-    const personagemEdit = req.body;
-    const updatePersonagem = personagensService.updatePersonagensService(idParam, personagemEdit);
-    res.send(updatePersonagem);
+  const idParam = Number(req.params.id);
+  const personagemEdit = req.body;
+  const updatePersonagem = personagensService.updatePersonagensService(
+    idParam,
+    personagemEdit,
+  );
+  res.send(updatePersonagem);
 };
 
-const deletePersonagensController = (req, res) => {};
+const deletePersonagensController = (req, res) => {
+  const idParam = Number(req.params.id);
+  personagensService.deletePersonagensService(idParam);
+  res.send({ message: 'Personagem deletado.' });
+};
 
 module.exports = {
   findAllPersonagensController,
   findByIdPersonagensController,
   createPersonagensController,
   updatePersonagensController,
-  deletePersonagensController
+  deletePersonagensController,
 };

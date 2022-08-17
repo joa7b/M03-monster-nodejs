@@ -6,15 +6,15 @@ const routes = require('./src/routes/personagem.route');
 
 app.use(express.json());
 app.use(cors());
-app.use('/personagens', routes);
+app.use('/', routes);
 
 // GET all
-app.get('/personagens/todos-personagens', (req, res) => {
+app.get('/personagens', (req, res) => {
   res.send(personagens);
 });
 
 // GET by id
-app.get('/personagens/todos-personagens/:id', (req, res) => {
+app.get('/personagens/:id', (req, res) => {
   let id = req.params.id;
 
   for (let n of personagens) {
