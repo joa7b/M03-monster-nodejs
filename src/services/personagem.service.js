@@ -1,37 +1,34 @@
-const Personagens = require('../models/Personagem')
+const Personagens = require('../models/Personagem');
 
 const findAllPersonagensService = async () => {
   const personagens = await Personagens.find();
   return personagens;
 };
 
-const findByIdPersonagensService = (id) => {
-  return personagens.find((personagem) => personagem.id == id);
+const findByIdPersonagensService = async (id) => {
+  return await Personagens.find({_id:id});
 };
 
-const createPersonagemService = (newPersonagem) => {
-  const newId = personagens.length + 1;
+const createPersonagemService = async (newPersonagem) => {
+  const newId = (await Personagens.length) + 1;
   newPersonagem.id = newId;
-  personagens.push(newPersonagem);
-  return newPersonagem;
+  const personagem = new Personagens(newPersonagem);
+  return await personagem.save();
 };
 
-const updatePersonagensService = (id, personagemEdited) => {
-  personagemEdited['id'] = id;
-  const personagemIndex = personagens.findIndex((personagem) => personagem.id == id);
-  personagens[personagemIndex] = personagemEdited;
-  return personagemEdited
-}
+const updatePersonagensService = async (id, personagemEdited) => {
+  //personagemEdited['_id'] = id;
+  return await Personagens.findOneAndUpdate({_id:id}, personagemEdited, {new: true});
+};
 
-const deletePersonagensService = (id) => {
-  const personagemIndex = personagens.findIndex((personagem) => personagem.id == id);
-  return personagens.splice(personagemIndex, 1);
-}
+const deletePersonagensService = async (id) => {
+  return await Personagens.findOneAndDelete({_id:id});
+};
 
 module.exports = {
   findAllPersonagensService,
   findByIdPersonagensService,
   createPersonagemService,
   updatePersonagensService,
-  deletePersonagensService
+  deletePersonagensService,
 };

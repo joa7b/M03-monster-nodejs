@@ -5,24 +5,24 @@ const findAllPersonagensController = async (req, res) => {
   res.send(allPersonagens);
 };
 
-const findByIdPersonagensController = (req, res) => {
-  const idParam = Number(req.params.id);
+const findByIdPersonagensController = async (req, res) => {
+  const idParam = req.params.id;
 
   if (!idParam) {
-    return res.status(400).send({ message: 'Id inválido.' });
+    return await res.status(400).send({ message: 'Id inválido.' });
   }
 
   const personagemSelecionado =
-    personagensService.findByIdPersonagensService(idParam);
+    await personagensService.findByIdPersonagensService(idParam);
 
   if (!personagemSelecionado) {
-    return res.status(404).send({ message: 'Personagem não encontrado.' });
+    return await res.status(404).send({ message: 'Personagem não encontrado.' });
   }
 
   res.send(personagemSelecionado);
 };
 
-const createPersonagensController = (req, res) => {
+const createPersonagensController = async (req, res) => {
   const personagem = req.body;
 
   if (
@@ -32,47 +32,47 @@ const createPersonagensController = (req, res) => {
     !personagem.imagem ||
     !personagem.sobre
   ) {
-    return res.status(400).send({ message: 'Preencha todos os campos.' });
+    return await res.status(400).send({ message: 'Preencha todos os campos.' });
   }
 
-  const novoPersonagem = personagensService.createPersonagemService(personagem);
+  const novoPersonagem = await personagensService.createPersonagemService(personagem);
   res.send(novoPersonagem);
 };
 
-const updatePersonagensController = (req, res) => {
-  const idParam = Number(req.params.id);
+const updatePersonagensController = async(req, res) => {
+  const idParam = req.params.id;
 
   if (!idParam) {
-    return res.status(400).send({ message: 'Id inválido.' });
+    return await res.status(400).send({ message: 'Id inválido.' });
   }
 
   const personagemEdit = req.body;
 
   if (
-    !personagem ||
-    !personagem.nome ||
-    !personagem.personalidade ||
-    !personagem.imagem ||
-    !personagem.sobre
+    !personagemEdit ||
+    !personagemEdit.nome ||
+    !personagemEdit.personalidade ||
+    !personagemEdit.imagem ||
+    !personagemEdit.sobre
   ) {
     return res.status(400).send({ message: 'Preencha todos os campos.' });
   }
 
-  const updatePersonagem = personagensService.updatePersonagensService(
+  const updatePersonagem = await personagensService.updatePersonagensService(
     idParam,
     personagemEdit,
   );
   res.send(updatePersonagem);
 };
 
-const deletePersonagensController = (req, res) => {
-  const idParam = Number(req.params.id);
+const deletePersonagensController = async (req, res) => {
+  const idParam = req.params.id;
 
   if (!idParam) {
-    return res.status(400).send({ message: 'Id inválido.' });
+    return await res.status(400).send({ message: 'Id inválido.' });
   }
   
-  personagensService.deletePersonagensService(idParam);
+  const personagemService = await personagensService.deletePersonagensService(idParam);
   res.send({ message: 'Personagem deletado.' });
 };
 
